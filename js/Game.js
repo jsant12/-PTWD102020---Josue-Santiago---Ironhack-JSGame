@@ -5,6 +5,7 @@ class Game {
     this.score = 0;
     this.background = new Image();
     this.background.src = "./IMG/background5.jpg";
+    this.on = true;
     
     this.pcShip = new pcShip(
       this.canvas.width / 2 - 40,
@@ -34,7 +35,7 @@ class Game {
   init() {
     this.updateCanvasInterval = setInterval(this.updateCanvas, 50);
     this.startWeaponInterval = setInterval(this.startWeapon, 1500);
-    this.startPlWeaponInterval = setInterval(this.startPlWeapon, 1500);
+    // this.startPlWeaponInterval = setInterval(this.startPlWeapon, 1500);
     this.startAsteroidInterval = setInterval(this.startAsteroid, 3500);
   }
 
@@ -101,5 +102,6 @@ class Game {
   gameOver = () => {
     clearInterval(this.updateCanvasInterval);
     clearInterval(this.startWeaponInterval);
+    this.on = false;
   };
 }

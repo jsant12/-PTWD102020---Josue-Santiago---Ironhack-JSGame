@@ -21,6 +21,9 @@ window.onload = () => {
         case 'KeyD':
           if(game.pcShip.x <= game.canvas.width - game.pcShip.width - 55) game.pcShip.x += 20;
           break;
+          case 'ControlRight':
+          case 'KeyX':
+            game.startPlWeapon();
       };
       console.log(game.pcShip.x);
       

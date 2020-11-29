@@ -1,10 +1,9 @@
-class asteroid {
-  constructor(x, y, context) {
-    this.x = x;
-    this.y = y;
-    this.dx = 10;
-    this.width = 160;
-    this.height = 160;
+class Asteroid {
+  constructor(x, y, width, context) {
+    this.x = 0;
+    this.y = 0;
+    this.width = 50;
+    this.height = 50;
     this.image = new Image();
     this.image.src = "./IMG/asteroid2.png";
 
@@ -12,15 +11,20 @@ class asteroid {
   }
 
   draw() {
-    this.y += 0.5;
+    this.y += 5;
     this.context.drawImage(this.image, this.x, this.y, this.width, this.height);
-    if (this.x >= canvas.width - this.width) {
-      this.dx = this.x-10;
-    } else if (this.x <= 0) {
-      this.dx = 10;
-    }
-    this.x += this.dx;
   }
-  
-  
+  collisionDetection = (pcShip) => {
+    if (
+      !(
+        pcShip.x > this.x + this.width ||
+        pcShip.x + pcShip.width < this.x ||
+        pcShip.y > this.y + this.height ||
+        pcShip.y + pcShip.height < this.y
+      )
+    ) {-
+      return true;
+    }
+    return false;
+  };
 }

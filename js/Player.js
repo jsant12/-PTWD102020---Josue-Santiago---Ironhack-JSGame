@@ -2,8 +2,8 @@ class pcShip {
     constructor(x, y, context) {
         this.x = x;
         this.y = y;
-        this.width = 200;
-        this.height = 160;
+        this.width = 100;
+        this.height = 80;
         this.image = new Image();
         this.image.src = './IMG/whiteShip.png';
         this.context = context;

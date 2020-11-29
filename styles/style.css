@@ -2,8 +2,6 @@ body {
   padding: 0;
   text-align: center;
   background-color: black;
-  display: flex;
-  background-image: url("./IMG/background4.png");
 }
 
 .game-intro {

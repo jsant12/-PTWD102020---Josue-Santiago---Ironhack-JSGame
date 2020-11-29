@@ -22,7 +22,7 @@ class Asteroid {
         pcShip.y > this.y + this.height ||
         pcShip.y + pcShip.height < this.y
       )
-    ) {-
+    ) {
       return true;
     }
     return false;

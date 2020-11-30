@@ -10,21 +10,25 @@ body {
 }
 
 .game-intro p {
-  font-size: 18px;
-  font-family: "Verdana"
+  font-size: 35px;
+  margin-right: -50px;
+  font-family:"Orbitron";
+  color: white;
+
 }
 
 .logo-img {
-  width: 350px;
+  width: 500px;
 }
 
 .arrows-img {
-  width: 150px;
+  width: 500px;
 }
 
 body button {
   font-size: 30px;
-  background-color: royalblue;
+  background-color: darkred;
+  font-family: 'Orbitron';
   color: white;
   padding: 20px 40px;
   border: 0;

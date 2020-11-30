@@ -26,9 +26,13 @@ class Game {
 
   init() {
     this.updateCanvasInterval = setInterval(this.updateCanvas, 50);
-    this.startWeaponInterval = setInterval(this.startWeapon, 1000);
-    this.startPlWeaponInterval = setInterval(this.startPlWeapon, 1500);
-    this.startAsteroidInterval = setInterval(this.startAsteroid, 4000);
+    this.startWeaponInterval = setInterval(this.startWeapon, 1200);
+    // this.startPlWeaponInterval = setInterval(this.startPlWeapon, 2400);
+    // this.startAsteroidInterval = setInterval(this.startAsteroid, 4000);
+
+    this.asteroid[0] = new Asteroid(this.canvas.width/2, this.canvas.height/2, this.canvas.width, this.context, 0.60);
+    this.asteroid[1] = new Asteroid(this.canvas.width/1.5, this.canvas.height/4, this.canvas.width, this.context, -0.10);
+    this.asteroid[2] = new Asteroid(this.canvas.width/1, this.canvas.height/4 + this.canvas.height/2, this.canvas.width, this.context, -0.25);
   }
 
   updateCanvas = () => {
@@ -49,6 +53,8 @@ class Game {
       if (collision) {
         this.gameOver();
       }
+
+
       if (weapons.y > this.canvas.height) {
         this.score++;
         this.weapons.splice(i, 1);
@@ -57,8 +63,7 @@ class Game {
 
     this.plWeapons.forEach((plWeapons, i) => {
       plWeapons.draw();
-      const collision = plWeapons.collisionDetection(this.npcShip);
-      if (collision) {
+      if (plWeapons.collisionDetection(this.npcShip)) {
         this.gameOver();
       }
       if (plWeapons.y > this.canvas.height) {
@@ -73,10 +78,6 @@ class Game {
       if (collision) {
         this.gameOver();
       }
-      if (asteroid.y > this.canvas.height) {
-        this.score++;
-        this.asteroid.splice(i, 1);
-      }
     });
     console.log(this.score);
   };
@@ -90,17 +91,18 @@ class Game {
       width,
       this.context
     );
+  
     this.weapons.push(weapons);
   };
 
   startPlWeapon = () => {
     const width = 100 + Math.random() * 100;
-    const x = (this.canvas.width - width) * Math.random();
     const plWeapons = new pcWeapon(
-      this.pcShip.x + 80,
+      this.pcShip.x + 35,
       this.pcShip.y,
       this.context.width,
-      this.context
+      this.context,
+      this.plWeapons.y - 100
     );
     this.plWeapons.push(plWeapons);
   };
@@ -109,10 +111,9 @@ class Game {
     const width = 100 + Math.random() * 300;
     const x = (this.canvas.width - width) * Math.random();
     const asteroid = new Asteroid(
-      this.canvas.width-100,
-      this.canvas.height,
+      this.canvas.width,
+      this.canvas.height/2,
       width,
-  
       this.context
     );
     this.asteroid.push(asteroid);

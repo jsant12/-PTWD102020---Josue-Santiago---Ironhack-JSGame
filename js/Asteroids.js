@@ -1,9 +1,10 @@
 class Asteroid {
-  constructor(x, y, width, context) {
-    this.x = 0;
-    this.y = 0;
-    this.width = 50;
-    this.height = 50;
+  constructor(x, y, width, context, direction) {
+    this.x = x;
+    this.y = y;
+    this.direction = direction;
+    this.width = 125;
+    this.height = 115;
     this.image = new Image();
     this.image.src = "./IMG/asteroid2.png";
 
@@ -11,7 +12,12 @@ class Asteroid {
   }
 
   draw() {
-    this.y += 5;
+    this.y += 1;
+    if (this.x <= -300 || this.x >= 1800)
+    {
+      this.direction *= -1;
+    }
+    this.x += 15 * this.direction;
     this.context.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
   collisionDetection = (pcShip) => {
@@ -26,5 +32,8 @@ class Asteroid {
       return true;
     }
     return false;
+
+    
   };
+
 }

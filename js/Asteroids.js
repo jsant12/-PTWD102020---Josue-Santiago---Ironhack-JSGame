@@ -12,12 +12,14 @@ class Asteroid {
   }
 
   draw() {
-    this.y += 1;
+    this.y += 0.25;
     if (this.x <= -300 || this.x >= 1800)
+    if (this.y <= -50 || this.y >= 100)
     {
       this.direction *= -1;
     }
     this.x += 15 * this.direction;
+    this.y += 5 * this.direction;
     this.context.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
   collisionDetection = (pcShip) => {

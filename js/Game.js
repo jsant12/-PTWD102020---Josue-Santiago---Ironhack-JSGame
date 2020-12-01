@@ -26,13 +26,13 @@ class Game {
 
   init() {
     this.updateCanvasInterval = setInterval(this.updateCanvas, 50);
-    this.startWeaponInterval = setInterval(this.startWeapon, 1200);
+    this.startWeaponInterval = setInterval(this.startWeapon, Math.floor(Math.random() * 400) + 200);
     // this.startPlWeaponInterval = setInterval(this.startPlWeapon, 2400);
     // this.startAsteroidInterval = setInterval(this.startAsteroid, 4000);
 
-    this.asteroid[0] = new Asteroid(this.canvas.width/2, this.canvas.height/2, this.canvas.width, this.context, 0.60);
-    this.asteroid[1] = new Asteroid(this.canvas.width/1.5, this.canvas.height/4, this.canvas.width, this.context, -0.10);
-    this.asteroid[2] = new Asteroid(this.canvas.width/1, this.canvas.height/4 + this.canvas.height/2, this.canvas.width, this.context, -0.25);
+    this.asteroid[0] = new Asteroid(this.canvas.width/2, this.canvas.height/2, this.canvas.width, this.context, -0.60);
+    this.asteroid[1] = new Asteroid(this.canvas.width/1.5, this.canvas.height/4, this.canvas.width, this.context, 0.25);
+    this.asteroid[2] = new Asteroid(this.canvas.width/1, this.canvas.height/4 + this.canvas.height/3, this.canvas.width, this.context, -0.60);
   }
 
   updateCanvas = () => {
@@ -91,8 +91,9 @@ class Game {
       width,
       this.context
     );
-  
-    this.weapons.push(weapons);
+      if(Math.floor(Math.random() * 100) % 4 === 0) {
+        this.weapons.push(weapons);
+      }
   };
 
   startPlWeapon = () => {
@@ -118,9 +119,16 @@ class Game {
     );
     this.asteroid.push(asteroid);
   };
+
+  scoreBoard = () => {
+    context.fillStyle = 'white';
+    context.font = '30px "Verdana"';
+    context.fillText(`Score :`, 800, 50);
+  };
+
   gameOver = () => {
     clearInterval(this.updateCanvasInterval);
     clearInterval(this.startWeaponInterval);
     clearInterval(this.startAsteroidInterval);
   };
-}
+};

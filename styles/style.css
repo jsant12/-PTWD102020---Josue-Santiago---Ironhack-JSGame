@@ -48,3 +48,8 @@ body button {
   border-color: red;
 }
 
+#console {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-left:1700px ;
+}

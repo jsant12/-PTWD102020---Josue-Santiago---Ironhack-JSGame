@@ -3,8 +3,8 @@ class npcShip {
     this.x = x;
     this.y = y;
     this.dx = 10;
-    this.width = 160;
-    this.height = 160;
+    this.width = 120;
+    this.height = 120;
     this.image = new Image();
     this.image.src = "./IMG/redShip.png";
 

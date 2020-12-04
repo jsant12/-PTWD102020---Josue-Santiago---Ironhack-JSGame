@@ -3,8 +3,10 @@ class Game {
     this.canvas = canvas;
     this.context = context;
     this.score = 0;
+    this.npcHealth = 300;
     this.background = new Image();
     this.background.src = "./IMG/background5.jpg";
+    this.stopTime = false;
 
     this.pcShip = new pcShip(
       this.canvas.width / 2 - 40,
@@ -26,13 +28,34 @@ class Game {
 
   init() {
     this.updateCanvasInterval = setInterval(this.updateCanvas, 50);
-    this.startWeaponInterval = setInterval(this.startWeapon, Math.floor(Math.random() * 400) + 200);
+    this.startWeaponInterval = setInterval(
+      this.startWeapon,
+      Math.floor(Math.random() * 400) + 200
+    );
     // this.startPlWeaponInterval = setInterval(this.startPlWeapon, 2400);
     // this.startAsteroidInterval = setInterval(this.startAsteroid, 4000);
 
-    this.asteroid[0] = new Asteroid(this.canvas.width/2, this.canvas.height/2, this.canvas.width, this.context, -0.60);
-    this.asteroid[1] = new Asteroid(this.canvas.width/1.5, this.canvas.height/4, this.canvas.width, this.context, 0.25);
-    this.asteroid[2] = new Asteroid(this.canvas.width/1, this.canvas.height/4 + this.canvas.height/3, this.canvas.width, this.context, -0.60);
+    this.asteroid[0] = new Asteroid(
+      this.canvas.width / 2,
+      this.canvas.height / 2,
+      this.canvas.width,
+      this.context,
+      -0.7
+    );
+    this.asteroid[1] = new Asteroid(
+      this.canvas.width / 1.5,
+      this.canvas.height / 4,
+      this.canvas.width,
+      this.context,
+      0.4
+    );
+    this.asteroid[2] = new Asteroid(
+      this.canvas.width / 1,
+      this.canvas.height / 4 + this.canvas.height / 3,
+      this.canvas.width,
+      this.context,
+      -0.6
+    );
   }
 
   updateCanvas = () => {
@@ -54,7 +77,6 @@ class Game {
         this.gameOver();
       }
 
-
       if (weapons.y > this.canvas.height) {
         this.score++;
         this.weapons.splice(i, 1);
@@ -63,13 +85,20 @@ class Game {
 
     this.plWeapons.forEach((plWeapons, i) => {
       plWeapons.draw();
-      if (plWeapons.collisionDetection(this.npcShip)) {
+    
+      const pcAttack = plWeapons.collisionDetection(this.npcShip)
+      if (pcAttack) {
+        this.npcHealth -= 1;
+      }
+      if (this.npcHealth === 0){
         this.gameOver();
       }
-      if (plWeapons.y > this.canvas.height) {
-        this.score++;
-        this.plWeapons.splice(i, 1);
-      }
+      console.log (this.npcHealth);
+
+      // if (plWeapons.y > this.canvas.height) {
+      //   this.score++;
+      //   this.plWeapons.splice(i, 1);
+      // }
     });
 
     this.asteroid.forEach((asteroid, i) => {
@@ -91,9 +120,9 @@ class Game {
       width,
       this.context
     );
-      if(Math.floor(Math.random() * 100) % 4 === 0) {
-        this.weapons.push(weapons);
-      }
+    if (Math.floor(Math.random() * 100) % 4 === 0) {
+      this.weapons.push(weapons);
+    }
   };
 
   startPlWeapon = () => {
@@ -113,22 +142,22 @@ class Game {
     const x = (this.canvas.width - width) * Math.random();
     const asteroid = new Asteroid(
       this.canvas.width,
-      this.canvas.height/2,
+      this.canvas.height / 2,
       width,
       this.context
     );
     this.asteroid.push(asteroid);
   };
 
-  scoreBoard = () => {
-    context.fillStyle = 'white';
-    context.font = '30px "Verdana"';
-    context.fillText(`Score :`, 800, 50);
-  };
-
   gameOver = () => {
     clearInterval(this.updateCanvasInterval);
     clearInterval(this.startWeaponInterval);
     clearInterval(this.startAsteroidInterval);
+    this.stopTime = true;
+    // this.context.clearRect(0, 0, 1125, 750);
+    this.context.fillStyle = "darkred";
+    this.context.font = '60px "Orbitron"';
+    this.context.fillText(`// TRANSMISSION LOST //`, 135, 375);
+
   };
-};
+}

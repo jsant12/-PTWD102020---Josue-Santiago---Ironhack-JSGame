@@ -17,10 +17,10 @@ class Weapon {
   collisionDetection = (pcShip) => {
     if (
       !(
-        pcShip.x > this.x + this.width ||
-        pcShip.x + pcShip.width < this.x ||
-        pcShip.y > this.y + this.height ||
-        pcShip.y + pcShip.height < this.y
+        pcShip.x + 30 > this.x + this.width ||
+        pcShip.x + pcShip.width < this.x + 30||
+        pcShip.y + 30 > this.y + this.height ||
+        pcShip.y + pcShip.height < this.y + 30
       )
     ) {
       return true;

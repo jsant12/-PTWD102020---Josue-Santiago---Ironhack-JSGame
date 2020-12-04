@@ -2,34 +2,36 @@ body {
   padding: 0;
   text-align: center;
   background-color: black;
+  display: inline-flex;
+  justify-content: space-evenly;
 }
 
 .game-intro {
+  order: 1;
   float: top;
-  padding: 0% 10%;
+  padding-top: 75px;
+  padding-right: 10px;
 }
 
 .game-intro p {
-  font-size: 35px;
-  margin-right: -50px;
-  font-family:"Orbitron";
+  font-size: 15px;
+  font-family: "Orbitron";
   color: white;
-
+  text-align: center;
 }
 
 .logo-img {
-  width: 500px;
-}
+  width: 325px;
+  border-color: black;
 
-.arrows-img {
-  width: 500px;
 }
 
 body button {
-  font-size: 30px;
+  font-size: 20px;
   background-color: darkred;
-  font-family: 'Orbitron';
+  font-family: "Orbitron";
   color: white;
+  margin-top: 200px;
   padding: 20px 40px;
   border: 0;
   box-shadow: 0;
@@ -38,9 +40,10 @@ body button {
 }
 
 #game-board {
-    display: flex;
-    float: right;
-    padding: 20px 0px;
+  order: 2;
+  position: center;
+  float: center;
+  padding: 20px 0px;
 }
 
 #canvas {
@@ -49,7 +52,58 @@ body button {
 }
 
 #console {
-  display: flex;
-  flex-direction: column-reverse;
-  margin-left:1700px ;
+  order: 3;
+  float: right;
+  width: 325px;
+  margin-top: 500px;
 }
+
+#safeTimer  {
+  font-size: 25px;
+  font-family: "Orbitron";
+  color: darkred;
+  text-align: center;
+  float: right;
+  width: 325px;
+  margin-top: -650px;
+
+  
+}
+
+#safeTimer  p{
+  font-size: 35px;
+  font-family: "Orbitron";
+  color: white;
+  text-align: center;
+
+}
+
+.bottom {
+  width: 1000px;
+  height: 75px;
+}
+
+#game-board p {
+  order: 2;
+  position: center;
+  float: center;
+  padding: 20px 0px;
+  margin-top: -500px;
+}
+
+#scoreBoard {
+  ont-size: 25px;
+  font-family: "Orbitron";
+  color: darkred;
+  text-align: center;
+  float: right;
+  width: 325px;
+  margin-top: -450px;
+
+}
+
+#score {
+  color: white;
+  font-size: 35px;
+}
+

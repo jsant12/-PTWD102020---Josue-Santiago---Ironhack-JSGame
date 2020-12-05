@@ -24,10 +24,10 @@ class Asteroid {
   collisionDetection = (pcShip) => {
     if (
       !(
-        pcShip.x + 40 > this.x + this.width ||
-        pcShip.x + pcShip.width < this.x + 40||
-        pcShip.y + 40 > this.y + this.height ||
-        pcShip.y + pcShip.height < this.y + 40
+        pcShip.x + 25 > this.x + this.width ||
+        pcShip.x + pcShip.width < this.x + 25||
+        pcShip.y + 25 > this.y + this.height ||
+        pcShip.y + pcShip.height < this.y + 25
       )
     ) 
     

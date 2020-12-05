@@ -90,6 +90,7 @@ class Game {
       const pcAttack = plWeapons.collisionDetection(this.npcShip)
       if (pcAttack) {
         this.npcHealth -= 1;
+        this.plWeapons.splice(i, 1);
       }
       if (this.npcHealth === 0){
         this.gameOverWin();

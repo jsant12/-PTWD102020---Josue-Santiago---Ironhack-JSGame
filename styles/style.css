@@ -18,6 +18,7 @@ body {
   font-family: "Orbitron";
   color: white;
   text-align: center;
+  margin-top: 220px;
 }
 
 .logo-img {
@@ -31,7 +32,7 @@ body button {
   background-color:#2097FF;
   font-family: "Orbitron";
   color: white;
-  margin-top: 200px;
+  
   padding: 20px 40px;
   border: 0;
   box-shadow: 0;

@@ -28,7 +28,7 @@ body {
 
 body button {
   font-size: 20px;
-  background-color: darkred;
+  background-color: #6D0E10;
   font-family: "Orbitron";
   color: white;
   margin-top: 200px;
@@ -48,7 +48,7 @@ body button {
 
 #canvas {
   border-style: double;
-  border-color: red;
+  border-color: #6D0E10;
 }
 
 
@@ -58,12 +58,13 @@ body button {
   float: right;
   width: 325px;
   margin-top: 500px;
+  color: #6D0E10;
 }
 
 #safeTimer  {
   font-size: 25px;
   font-family: "Orbitron";
-  color: darkred;
+  color: #6D0E10;
   text-align: center;
   float: right;
   width: 325px;
@@ -101,7 +102,7 @@ body button {
 #scoreBoard {
   font-size: 25px;
   font-family: "Orbitron";
-  color: darkred;
+  color: #6D0E10;
   text-align: center;
   float: right;
   width: 325px;

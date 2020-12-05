@@ -3,11 +3,12 @@ class Game {
     this.canvas = canvas;
     this.context = context;
     this.score = 0;
-    this.npcHealth = 300;
+    this.npcHealth = 25;
     this.background = new Image();
     this.background.src = "./IMG/background5.jpg";
     this.stopTime = false;
-
+    // this.gameOverMsg; future condition for multiple ending ( enemy death, Fleet arrives, or PCDeath)
+    this.canPlayerShoot = true; //on player shoot change to false, set timeout to one sec to shoot.
     this.pcShip = new pcShip(
       this.canvas.width / 2 - 40,
       (this.canvas.height / 4) * 3.5,
@@ -91,7 +92,7 @@ class Game {
         this.npcHealth -= 1;
       }
       if (this.npcHealth === 0){
-        this.gameOver();
+        this.gameOverWin();
       }
       console.log (this.npcHealth);
 
@@ -134,8 +135,14 @@ class Game {
       this.context,
       this.plWeapons.y - 100
     );
-    this.plWeapons.push(plWeapons);
+    if(this.canPlayerShoot) {
+      this.plWeapons.push(plWeapons);
+      this.canPlayerShoot = false;
+      setTimeout(() => {this.canPlayerShoot = true}, 1000)
+    }
+    
   };
+
 
   startAsteroid = () => {
     const width = 100 + Math.random() * 300;
@@ -158,6 +165,17 @@ class Game {
     this.context.fillStyle = "darkred";
     this.context.font = '60px "Orbitron"';
     this.context.fillText(`// TRANSMISSION LOST //`, 135, 375);
-
+  };
+  gameOverWin = () => {
+      clearInterval(this.updateCanvasInterval);
+      clearInterval(this.startWeaponInterval);
+      clearInterval(this.startAsteroidInterval);
+      this.stopTime = true;
+      this.context.fillStyle = "darkred";
+    this.context.font = '40px "Orbitron"';
+    this.context.fillText(`-----Enemy Destroyed-----`, 145, 175);
+    this.context.font = '60px "Orbitron"';
+    this.context.fillText(`// MISSION COMPLETE //`, 135, 375);
+    
   };
 }

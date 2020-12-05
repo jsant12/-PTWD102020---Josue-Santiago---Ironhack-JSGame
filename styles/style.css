@@ -51,6 +51,8 @@ body button {
   border-color: red;
 }
 
+
+
 #console {
   order: 3;
   float: right;
@@ -88,17 +90,24 @@ body button {
   position: center;
   float: center;
   padding: 20px 0px;
-  margin-top: -500px;
+  margin-top: -800px;
+  color: white;
+  font-size: 15px;
+  font-family: "Orbitron";
+  text-align: left;
+  padding: 0 0 0 80px;
 }
 
 #scoreBoard {
-  ont-size: 25px;
+  font-size: 25px;
   font-family: "Orbitron";
   color: darkred;
   text-align: center;
   float: right;
   width: 325px;
   margin-top: -450px;
+  
+  
 
 }
 
@@ -106,4 +115,6 @@ body button {
   color: white;
   font-size: 35px;
 }
+
+
 

@@ -28,7 +28,7 @@ body {
 
 body button {
   font-size: 20px;
-  background-color: #6D0E10;
+  background-color:#2097FF;
   font-family: "Orbitron";
   color: white;
   margin-top: 200px;
@@ -49,6 +49,7 @@ body button {
 #canvas {
   border-style: double;
   border-color: #6D0E10;
+  
 }
 
 

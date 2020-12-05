@@ -172,7 +172,7 @@ class Game {
       clearInterval(this.startWeaponInterval);
       clearInterval(this.startAsteroidInterval);
       this.stopTime = true;
-      this.context.fillStyle = "darkred";
+      this.context.fillStyle = "#6D0E10";
     this.context.font = '40px "Orbitron"';
     this.context.fillText(`-----Enemy Destroyed-----`, 145, 175);
     this.context.font = '60px "Orbitron"';
